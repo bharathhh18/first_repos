@@ -299,3 +299,27 @@ s.push(29)
 s.push(2)
 s.display()
 print("Minimum element:", s.getMin())
+
+#Next largest element question
+arr=[19,10,20,15,30,25]#Brute force
+n=len(arr)
+ans=[-1]*n
+for i in range(0,n):
+    for j in range(i+1,n):
+        if arr[j]>arr[i]:
+            ans[i]=arr[j]
+            break
+print(ans)
+
+#Optimal
+arr=[19,10,20,15,30,25]
+n=len(arr)
+ans=[-1]*n
+stack=[]
+for i in range(n-1,-1,-1):
+    while len(stack)!=0 and stack[-1]<=arr[i]:
+        stack.pop()
+    if len(stack)!=0:
+        ans[i]=stack[-1]
+    stack.append(arr[i])
+print(ans)
