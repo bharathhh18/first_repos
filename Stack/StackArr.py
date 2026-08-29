@@ -323,3 +323,19 @@ for i in range(n-1,-1,-1):
         ans[i]=stack[-1]
     stack.append(arr[i])
 print(ans)
+
+#Next largest element 2
+nums=[2,10,12,1,11]
+n=len(nums)
+ans=[-1]*n
+stack=[]
+
+for i in range(2*n-1,-1,-1):
+    while len(stack)!=0 and stack[-1]<=nums[i%n]:
+        stack.pop()
+
+    if i<n:
+        if len(stack)!=0:
+            ans[i]=stack[-1]
+    stack.append(nums[i%n])#We can't append i because it will give index error
+print(ans)
