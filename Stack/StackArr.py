@@ -339,3 +339,19 @@ for i in range(2*n-1,-1,-1):
             ans[i]=stack[-1]
     stack.append(nums[i%n])#We can't append i because it will give index error
 print(ans)
+
+#Asreroid collision problem 
+nums=[4,7,1,1,2,-3,-7,17,15,-18,-19]
+stack=[]
+n=len(nums)
+for i in range(0,n):
+    if nums[i]>0:
+        stack.append(nums[i])
+    else:
+        while len(stack)!=0 and stack[-1]>0 and stack[-1]<abs(nums[i]):
+            stack.pop()
+        if len(stack)!=0 and stack[-1]==abs(nums[i]):
+            stack.pop()
+        if len(stack)==0 or stack[-1]<0:
+            stack.append(nums[i])
+print(stack)
